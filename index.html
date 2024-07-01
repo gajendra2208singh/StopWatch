@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Watch</title>
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <section class="section_container">
+      <h1 class="stopWatch">Stop Watch</h1>
+        <div class="container">
+          <h1 class="second_Count"></h1>
+          <br/>
+            <div class="button_container">
+                <button class="start" type="button">Start</button>
+                <button class="reset" type="button">Reset</button>
+                <button class="stop" type="button">Stop</button>
+                <button class="gettime" type="button">getTime</button>
+            </div>
+            <h4 class="getTimeContainer"></h4>
+
+        </div>
+    </section>
+    <script>
+        let countSecond = document.querySelector(".second_Count");
+        let valueCount = (countSecond.innerText = 0);
+  
+        let startBtn = document.querySelector(".start");
+        let resetBtn = document.querySelector(".reset");
+        let stopBtn = document.querySelector(".stop");
+        let gettimeBtn = document.querySelector(".gettime");
+        let cleartimestopBtn = document.querySelector(".cleartimestop");
+  
+        let setVariable;
+        startBtn.addEventListener("click", () => {
+          setVariable = setInterval(() => {
+            valueCount++;
+            document.querySelector(".second_Count").innerText = valueCount;
+          }, 1000);
+        });
+  
+        resetBtn.addEventListener("click", () => {
+          document.querySelector(".second_Count").innerText = 0;
+          valueCount = 0;
+          clearInterval(setVariable);
+        });
+  
+        stopBtn.addEventListener("click", () => {
+          clearInterval(setVariable);
+        });
+  
+        gettimeBtn.addEventListener("click", () => {
+          document.querySelector(
+            ".getTimeContainer"
+          ).innerText = `The Stop Time is ${valueCount}s`;
+        });
+      </script>
+  
+</body>
+</html>
